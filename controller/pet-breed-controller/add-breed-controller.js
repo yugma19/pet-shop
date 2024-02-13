@@ -22,15 +22,13 @@ const addBreedController = async (req,res,next)=>
             breedId,
             categoryId,
             name,
-           purpose,
+            purpose,
             price,
             imageUrl,
-           
-           
     };
     await addBreed(data);
     const breedCount = await getBreedCount();
-    const updatedData = { ...data, breedCount };
+    const updatedData = { ...data,breedCount};
 
     return res.send(generateResponse('breed added', updatedData));
     }

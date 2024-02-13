@@ -4,8 +4,8 @@ const db = admin.firestore();
 
 const getBreedCount = async () => {
     try {
-        const abc = await db.collection(COLLECTION.petBreed).get(); 
-        const breedCount = abc.size; 
+        const numberOfBreeds = await db.collection(COLLECTION.petBreed).get(); 
+        const breedCount = numberOfBreeds.size; 
         return breedCount;
     } catch (error) {
        

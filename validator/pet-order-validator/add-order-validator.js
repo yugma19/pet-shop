@@ -22,12 +22,12 @@ const addOrderValidator = checkSchema({
       ),
     },
   },
-  selectedItems: {
+  foodId: {
     exists: {
-        errorMessage: getMessage('INPUT_REQUIRED').replace('{{ input }}', 'selectedItems'),
+        errorMessage: getMessage('INPUT_REQUIRED').replace('{{ input }}', 'foodId'),
       },
-      isArray: {
-        errorMessage: getMessage('INPUT_ARRAY').replace('{{ input }}', 'selectedItems'),
+      isString: {
+        errorMessage: getMessage('INPUT_STRING').replace('{{ input }}', 'foodId'),
       },
   },
   clothesId: {
@@ -38,15 +38,24 @@ const addOrderValidator = checkSchema({
         errorMessage: getMessage('INPUT_STRING').replace('{{ input }}', 'clothesId'),
       },
   },
-  foodId: {
-    exists: {
-        errorMessage: getMessage('INPUT_REQUIRED').replace('{{ input }}', 'foodId'),
-      },
-      isString: {
-        errorMessage: getMessage('INPUT_STRING').replace('{{ input }}', 'foodId'),
-      },
-  }
 
-  
+    foodQuantity: {
+      optional: true,
+      isNumeric: {
+        errorMessage: getMessage('INPUT_NUMERIC').replace(
+          '{{ input }}',
+          'foodQuantity',
+        ),
+      },
+    },
+    clothesQuantity: {
+      optional: true,
+      isNumeric: {
+        errorMessage: getMessage('INPUT_NUMERIC').replace(
+          '{{ input }}',
+          'clothesQuantity',
+        ),
+      },
+    }
 });
 module.exports = addOrderValidator;
